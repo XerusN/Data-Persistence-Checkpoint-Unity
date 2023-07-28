@@ -70,6 +70,12 @@ public class MainManager : MonoBehaviour
 
     public void GameOver()
     {
+        if (m_Points > PersistenceManager.Instance.bestScore)
+        {
+            PersistenceManager.Instance.bestScore = m_Points;
+        }
+        PersistenceManager.Instance.Save();
+
         m_GameOver = true;
         GameOverText.SetActive(true);
     }
